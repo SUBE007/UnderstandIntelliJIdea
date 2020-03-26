@@ -1,12 +1,13 @@
  package com.gradle.java;
 
  import sun.management.MethodInfo;
- import java.lang.annotation.Annotation;
+
+ import java.lang.annotation.*;
  import java.lang.reflect.Method;
 
 public class AnnotationExample {
     @Override
-    @MethodInfo(author="Narayan",comments="Main Method",date="Mar 25 2020",revision=1)
+    @MethodInfo(author="Sube007",comments="Main Method",date="Mar 25 2020",revision=1)
     public String toString(){
         return "Overriden toString Method";
     }
@@ -38,4 +39,15 @@ public class AnnotationExample {
         }
     }
 
-}
+//}
+ @Documented
+ @Inherited
+ @Target(ElementType.METHOD)
+ @Retention(RetentionPolicy.RUNTIME)
+ public @interface MethodInfo {
+     String author() default "SUBE007";
+     String date();
+     int revision() default 1;
+     String comments();
+ }
+ }
